@@ -377,11 +377,11 @@
         let selectedirradiationsTime = 0; // 訪問回数で選択された時間
 
         let menuTimes = {
-            '20分': 30,
-            '40分（初めての方はこちらから）': 60,
-            '60分': 90,
-            '90分': 120,
-            '120分': 150
+            '20分': 20,
+            '40分（初めての方はこちらから）': 40,
+            '60分': 60,
+            '90分': 90,
+            '120分': 120
         };
 
 
@@ -746,7 +746,7 @@
                     slotStart.setHours(parseInt(times[j].split(':')[0]), parseInt(times[j].split(':')[1]), 0, 0);
 
                     const slotEnd = new Date(slotStart);
-                    let menuDuration = selectedMenuTime || 30;
+                    let menuDuration = selectedMenuTime || 10;
                     let visitDuration = selectedVisitTime || 0;
                     let irradiationsDuration = selectedirradiationsTime || 0;
 

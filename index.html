@@ -663,6 +663,16 @@
                 console.log('LIFF初期化失敗', err);
             });
 
+            // localStorageから名前・電話番号を復元
+            const savedName = localStorage.getItem('reservationName');
+            const savedPhone = localStorage.getItem('reservationPhone');
+            if (savedName) {
+                document.getElementById('name').value = savedName;
+            }
+            if (savedPhone) {
+                document.getElementById('phone').value = savedPhone;
+            }
+
             fetchAvailability(currentDate);
         });
 
@@ -740,7 +750,15 @@
         }
 
         // 各ボタンや入力フィールドでupdateDisplayInfoを呼び出すようにする
-        document.getElementById('name').addEventListener('input', updateDisplayInfo);
+        document.getElementById('name').addEventListener('input', function () {
+            // 名前をlocalStorageに保存
+            localStorage.setItem('reservationName', this.value);
+            updateDisplayInfo();
+        });
+        document.getElementById('phone').addEventListener('input', function () {
+            // 電話番号をlocalStorageに保存
+            localStorage.setItem('reservationPhone', this.value);
+        });
         document.querySelectorAll('.visit-buttons button').forEach(button => {
             button.addEventListener('click', updateDisplayInfo);
         });
